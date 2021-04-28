@@ -1,0 +1,18 @@
+while true do
+	local instance = Instance.new("Part")
+	instance.Anchored = true
+	instance.CanCollide = false
+	instance.Transparency = 1
+	instance.Parent = workspace.AnticheatObjects
+	instance.Position = script.Parent.HumanoidRootPart.Position
+	wait(5)
+	if (instance.Position - script.Parent.HumanoidRootPart.Position).Magnitude >= (script.Parent.Humanoid.WalkSpeed*5+5) then
+		local plr = game.Players:GetPlayerFromCharacter(script.Parent)
+		if plr then
+			instance:Destroy()
+			plr:Kick("Our anti cheat systems have detected you speedhacking/teleporting, exploiting is against roblox's TOS. Distance Traveled: "..math.round((instance.Position - script.Parent.HumanoidRootPart.Position).Magnitude))			
+		end		
+	end
+	print((instance.Position - script.Parent.HumanoidRootPart.Position).Magnitude)
+	instance:Destroy()
+end
