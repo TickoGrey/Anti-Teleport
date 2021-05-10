@@ -1,9 +1,18 @@
+--setup
+local anticheatobjects = workspace:FindFirstChild("AntiCheatObjects")
+if not anticheatobjects then
+	local folder = Instance.new("Folder")
+	folder.Name = "AntiCheatObjects"
+	folder.Parent = workspace
+	anticheatobjects = folder
+end
+--loop (runs every 5 seconds)
 while true do
 	local instance = Instance.new("Part")
 	instance.Anchored = true
 	instance.CanCollide = false
 	instance.Transparency = 1
-	instance.Parent = workspace.AnticheatObjects
+	instance.Parent = anticheatobjects
 	instance.Position = script.Parent.HumanoidRootPart.Position
 	wait(5)
 	if (instance.Position - script.Parent.HumanoidRootPart.Position).Magnitude >= (script.Parent.Humanoid.WalkSpeed*5+5) then
